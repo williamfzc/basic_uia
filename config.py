@@ -6,4 +6,5 @@ CASE_DIR_PATH = os.path.join(PROJECT_PATH, 'cases')
 
 DEVICE_ID_LIST = [
     '849a5c49',
+    '9b07c8f8',
 ]
