@@ -3,6 +3,7 @@ import config as cf
 import unittest
 import os
 
+# TODO: 使用StringIO来解决转换html的问题
 runner_instance = unittest.TextTestRunner(
     stream=open(os.path.join(cf.CUR_RESULT_FILE), 'w+'),
 )

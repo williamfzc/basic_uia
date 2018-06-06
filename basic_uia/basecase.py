@@ -1,4 +1,4 @@
-# TODO 看一下这里能不能重定向结果
+# TODO: 看一下这里能不能重定向结果
 import unittest
 import basic_uia.logger as logger
 
