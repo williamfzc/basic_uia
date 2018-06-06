@@ -1,4 +1,5 @@
 import logging
+import functools
 import config as cf
 
 
@@ -9,3 +10,13 @@ logging.basicConfig(
     format=LOG_FORMAT
 )
 info = logging.info
+
+
+def add_log(func):
+    @functools.wraps(func)
+    def deco(*args, **kwargs):
+        info(func.__name__ + 'start ...')
+        result = func(*args, **kwargs)
+        info(func.__name__ + 'stop.')
+        return result
+    return deco
