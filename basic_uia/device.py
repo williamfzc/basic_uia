@@ -1,6 +1,6 @@
 import config as cf
 from basic_uia import logger
-from uiautomator import Device
+import uiautomator2 as u2
 
 
 DEVICE_INSTANCE_DICT = dict()
@@ -9,7 +9,7 @@ DEVICE_INSTANCE_DICT = dict()
 class DeviceItem(object):
     def __init__(self, device_id):
         self.device_id = device_id
-        self._device_instance = Device(self.device_id)
+        self._device_instance = u2.connect(device_id)
         logger.info('{} connected'.format(self.device_id))
 
     def __getattr__(self, item):

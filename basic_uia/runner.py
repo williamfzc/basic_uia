@@ -1,7 +1,18 @@
 from basic_uia import device, logger, utils
+import config as cf
 import unittest
+import datetime
+import os
 
-runner_instance = unittest.TextTestRunner()
+runner_instance = unittest.TextTestRunner(
+    stream=open(
+        os.path.join(
+            cf.RESULT_DIR_PATH,
+            datetime.datetime.now().strftime('%Y%m%d%H%M%S')
+        ) + '.log',
+        'w+',
+    )
+)
 
 
 def run_all():

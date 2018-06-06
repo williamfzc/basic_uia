@@ -5,12 +5,12 @@ from basic_uia.basecase import BaseTestCase
 class TestCase(BaseTestCase):
     def setUp(self):
         # unlock
-        self.device.wakeup()
+        self.device.screen_on()
         self.device.swipe(500, 1000, 500, 0, steps=10)
         time.sleep(2)
     
     def tearDown(self):
-        self.device.sleep()
+        self.device.screen_off()
     
     def runTest(self):
         # 启动快捷入口
@@ -23,4 +23,4 @@ class TestCase(BaseTestCase):
             if self.device(text="秒开").exists:
                 self.device(text="秒开").click()
                 self.device.wait.update()
-        self.device.press.home()
+        self.device.press("home")
