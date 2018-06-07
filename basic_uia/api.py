@@ -6,7 +6,7 @@ class CustomAPI(object):
         self._device_instance = device_instance
 
     def clean_recent(self):
-        self._device_instance.press.recent()
+        self._device_instance.press('recent')
         time.sleep(1)
         self._device_instance(
             resourceId='com.coloros.recents:id/clear_button'
