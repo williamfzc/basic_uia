@@ -27,11 +27,13 @@ class BaseTestCase(unittest.TestCase):
         self.output_stream = output_stream
 
     @func_relax
+    @logger.add_log
     def setUp(self):
         super(BaseTestCase, self).setUp()
         self.before()
 
     @func_relax
+    @logger.add_log
     def tearDown(self):
         # TODO: 有待验证
         # 出错时触发截图
@@ -43,17 +45,15 @@ class BaseTestCase(unittest.TestCase):
         self.after()
 
     @func_relax
+    @logger.add_log
     def runTest(self):
         self.start()
 
-    @logger.add_log
     def before(self):
         pass
 
-    @logger.add_log
     def after(self):
         pass
 
-    @logger.add_log
     def start(self):
         pass

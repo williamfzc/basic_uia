@@ -29,9 +29,8 @@ CUR_SCREEN_SHOT_DIR = os.path.join(CUR_RESULT_DIR, 'screen_shot')
 
 # --- 配置机器 ---
 DEVICE_ID_LIST = [
-    # '849a5c49',
+    '849a5c49',
     # '9b07c8f8',
-    '192.168.0.152',
 ]
 
 # --- 文件夹初始化 ---
