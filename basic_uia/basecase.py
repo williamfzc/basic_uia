@@ -43,6 +43,11 @@ class BaseTestCase(unittest.TestCase):
 
         super(BaseTestCase, self).tearDown()
         self.after()
+        # RESET
+        # TODO 后台清理
+        self.device.press.back()
+        self.device.press.back()
+        self.device.press.home()
 
     @func_relax
     @logger.add_log

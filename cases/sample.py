@@ -20,7 +20,7 @@ class TestCase(BaseTestCase):
         if self.device(text="搜索").exists:
             self.device(text="搜索").set_text("饿了么")
             time.sleep(2)
-            if self.device(text="秒开").exists:
-                self.device(text="秒开").click()
-                self.device.wait.update()
-        self.device.press("home")
+            self.assertTrue(self.device(text="秒开").exists)
+            self.device(text="秒开").click()
+            time.sleep(2)
+            self.assertTrue(self.device(text="饿了么").exists)

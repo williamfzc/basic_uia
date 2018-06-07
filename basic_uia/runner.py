@@ -17,7 +17,7 @@ def run_all():
     for case_name, case_item in case_dict.items():
         for each_device_id, each_device in device_dict.items():
             logger.info(
-                'start case {} on device: {}'.format(
+                'start case [ {} ] on device: {}'.format(
                     case_name,
                     each_device_id,
                 )
