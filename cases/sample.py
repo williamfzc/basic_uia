@@ -10,17 +10,19 @@ class TestCase(BaseTestCase):
         time.sleep(2)
     
     def after(self):
-        self.device.sleep()
+        # 这里可以添加一些后置操作
+        # 如果不用 可以不要这个函数
+        pass
     
     def start(self):
         # 启动快捷入口
         self.device.swipe(500, 400, 500, 1000, steps=10)
         time.sleep(2)
-    
-        if self.device(text="搜索").exists:
-            self.device(text="搜索").set_text("饿了么")
-            time.sleep(2)
-            self.assertTrue(self.device(text="秒开").exists)
-            self.device(text="秒开").click()
-            time.sleep(2)
-            self.assertTrue(self.device(text="饿了么").exists)
+
+        self.assertTrue(self.device(text="搜索").exists)
+        self.device(text="搜索").set_text("饿了么")
+        time.sleep(2)
+        self.assertTrue(self.device(text="秒开").exists)
+        self.device(text="秒开").click()
+        time.sleep(2)
+        self.assertTrue(self.device(text="饿了么").exists)
