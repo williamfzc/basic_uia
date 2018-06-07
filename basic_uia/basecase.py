@@ -5,6 +5,7 @@ import sys
 import os
 import basic_uia.logger as logger
 import config as cf
+from basic_uia.api import CustomAPI
 
 
 def func_relax(func):
@@ -22,6 +23,7 @@ class BaseTestCase(unittest.TestCase):
         super(BaseTestCase, self).__init__(*args, **kwargs)
         self.device = device
         self.case_name = case_name
+        self.api = CustomAPI(self.device)
 
         # TODO: 测试过程中需要记录的东西可以写到这 暂时没想到可以干嘛 可能用来记录关键bug？
         self.output_stream = output_stream
@@ -46,9 +48,7 @@ class BaseTestCase(unittest.TestCase):
 
         # RESET
         self.device.press.home()
-        self.device.press.recent()
-        time.sleep(1)
-        self.device(resourceId='com.coloros.recents:id/clear_button').click()
+        self.api.clean_recent()
 
     @func_relax
     @logger.add_log
