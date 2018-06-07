@@ -37,9 +37,8 @@ class BaseTestCase(unittest.TestCase):
     @func_relax
     @logger.add_log
     def tearDown(self):
-        # TODO: 有待验证
         # 出错时触发截图
-        if sys.exc_info()[0]:
+        if sys.exc_info():
             pic_name = '{}.png'.format(self._testMethodName)
             self.device.screenshot(os.path.join(cf.CUR_SCREEN_SHOT_DIR, pic_name))
 
