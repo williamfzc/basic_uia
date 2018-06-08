@@ -7,7 +7,15 @@ class TestCase(BaseTestCase):
         # unlock
         self.device.wakeup()
         self.device.swipe(500, 1000, 500, 0, steps=10)
-        time.sleep(2)
+        # 调用adb命令
+        self.adb('shell am start -n com.nearme.instant.platform/a.a.a.bdf')
+        # 上面这一句即：
+        # adb -s YOUR_DEVICE_ID shell am start -n ......
+        # 其他调用同理
+
+        time.sleep(1)
+        self.device.press('home')
+        time.sleep(1)
     
     def after(self):
         # 这里可以添加一些后置操作
@@ -15,6 +23,11 @@ class TestCase(BaseTestCase):
         pass
     
     def start(self):
+        # 调用公用API
+        # self.api.xxx()
+        # 使用adb
+        # self.adb('
+
         # 启动快捷入口
         self.device.swipe(500, 400, 500, 1000, steps=10)
         time.sleep(2)

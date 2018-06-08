@@ -29,7 +29,7 @@ CUR_SCREEN_SHOT_DIR = None
 
 # --- 配置机器 ---
 # 通过参数传入也可
-DEVICE_ID_LIST = ['849a5c49', ]
+DEVICE_ID_LIST = ['QGTKH6MFVWRODU8T', ]
 
 
 # --- 文件夹初始化 ---

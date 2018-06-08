@@ -24,6 +24,7 @@ class BaseTestCase(unittest.TestCase):
         self.device = device
         self.case_name = case_name
         self.api = CustomAPI(self.device)
+        self.adb = self.device.server.adb.cmd
 
         # TODO: 测试过程中需要记录的东西可以写到这 暂时没想到可以干嘛 可能用来记录关键bug？
         self.output_stream = output_stream
