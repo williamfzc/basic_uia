@@ -18,12 +18,10 @@ RELAX_TIME = 1
 CUR_TASK_NAME = datetime.datetime.now().strftime('%Y%m%d%H%M%S') + str(random.randint(0, 9))
 # 本次任务的结果文件夹
 CUR_RESULT_DIR = None
-# unittest本身的测试输出
+# runner的输出（html）
 CUR_RESULT_FILE = None
 # 系统日志
 CUR_LOG_FILE = None
-# 可阅读的测试报告
-CUR_REPORT_FILE = None
 # 错误截图文件夹
 CUR_SCREEN_SHOT_DIR = None
 
@@ -35,11 +33,10 @@ DEVICE_ID_LIST = ['QGTKH6MFVWRODU8T', ]
 # --- 文件夹初始化 ---
 # --- 每次测试都会改变 ---
 def init_result_dir():
-    global CUR_LOG_FILE, CUR_REPORT_FILE, CUR_RESULT_DIR, CUR_RESULT_FILE, CUR_SCREEN_SHOT_DIR
+    global CUR_LOG_FILE, CUR_RESULT_DIR, CUR_RESULT_FILE, CUR_SCREEN_SHOT_DIR
     CUR_RESULT_DIR = os.path.join(RESULT_DIR_PATH, CUR_TASK_NAME)
-    CUR_RESULT_FILE = os.path.join(CUR_RESULT_DIR, 'unittest_output.txt')
+    CUR_RESULT_FILE = os.path.join(CUR_RESULT_DIR, 'result.html')
     CUR_LOG_FILE = os.path.join(CUR_RESULT_DIR, 'framework.log')
-    CUR_REPORT_FILE = os.path.join(CUR_RESULT_DIR, 'report.html')
     CUR_SCREEN_SHOT_DIR = os.path.join(CUR_RESULT_DIR, 'screen_shot')
 
     if not os.path.exists(CUR_SCREEN_SHOT_DIR):

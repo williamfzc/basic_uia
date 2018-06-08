@@ -19,13 +19,18 @@ def init_logger(logger_path):
 
     global info
     info = logging.info
+    info('===== SYSTEM READY =====')
 
 
 def add_log(func):
     @functools.wraps(func)
     def deco(*args, **kwargs):
-        logging.info(func.__name__ + ' start ...')
-        result = func(*args, **kwargs)
-        logging.info(func.__name__ + ' stop.')
+        logging.info('----- {} START -----'.format(func.__name__))
+        try:
+            result = func(*args, **kwargs)
+        except BaseException as e:
+            raise e
+        finally:
+            logging.info('----- {} STOP -----'.format(func.__name__))
         return result
     return deco

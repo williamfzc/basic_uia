@@ -1,4 +1,5 @@
 from basic_uia import device, logger, utils
+from basic_uia.htmltestrunner import HTMLTestRunner
 import config as cf
 import unittest
 import io
@@ -6,8 +7,8 @@ import io
 
 def run_all():
     runner_output = io.StringIO()
-    runner_instance = unittest.TextTestRunner(
-        stream=open(cf.CUR_RESULT_FILE, 'w+')
+    runner_instance = HTMLTestRunner(
+        stream=open(cf.CUR_RESULT_FILE, 'wb+')
     )
 
     case_dict = utils.CASE_MODULE_DICT
@@ -34,15 +35,8 @@ def run_all():
     result = runner_instance.run(test_suite)
 
     # result analysis
-    # todo: 暂时简陋版本
-    report_template_content = open(cf.REPORT_TEMPLATE_FILE).read()
-    with open(cf.CUR_REPORT_FILE, 'w+') as report_file:
-        report_content = report_template_content.format(
-            title_name=cf.CUR_TASK_NAME,
-            total_case_count=result.testsRun,
-            fail_case_count=len(result.failures)
-        )
-        report_file.write(report_content)
+    logger.info('Total cases: ' + str(result.testsRun))
+    logger.info('Fail cases: ' + str(len(result.failures)))
 
     runner_output.close()
     logger.info('test end')
