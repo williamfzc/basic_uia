@@ -29,6 +29,9 @@ def add_log(func):
         try:
             result = func(*args, **kwargs)
         except BaseException as e:
+            logging.warning('----- ERROR happened in {} -----'.format(func.__name__))
+            logging.warning(str(e))
+            logging.warning('----- ERROR LOG END -----')
             raise e
         finally:
             logging.info('----- {} STOP -----'.format(func.__name__))
