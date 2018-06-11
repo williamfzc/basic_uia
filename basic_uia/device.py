@@ -1,7 +1,7 @@
 import config as cf
 import os
 from basic_uia import logger
-from uiautomator import Device
+from .uiautomator import Device
 
 DEVICE_INSTANCE_DICT = dict()
 
