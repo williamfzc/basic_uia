@@ -1,14 +1,12 @@
 # basic_uia
 
-** 项目初期，如果遇到各种问题请马上反馈 **
-
 ## 使用
 
 - Python3
 - 安装requirements.txt中的依赖
     - `pip install -r requirements.txt`
 - 在`config.py`中添加手机id
-- 在cases中添加用例，参考`sample.py`，更具体的看[这里](https://blog.csdn.net/Temanm/article/details/49366485)
+- 在cases中添加用例，参考`sample.py`，更具体的看[这里](https://github.com/xiaocong/uiautomator)
 - 运行方式:
     - `python run.py` 会根据`config.py`中的配置运行
     - `python run.py -d 123456F` 会在id为`123456F`的机型上运行
@@ -17,8 +15,17 @@
     - 支持指定任务名
         - `python run.py -d 123456F -t abcde`
 
-## 扩展
+## 工程主要结构
 
-### API
-
-参见`basic_uia/api.py`，可以在其中自定义API供用例调用。
+- basic_uia
+    - 工程核心
+    - 开发人员维护
+    - 测试人员不必关心这个部分
+- cases
+    - 用例脚本文件都放置在这里
+- extend_api.py
+    - 自定义的API放置在这里
+    - 用于简化一些重复性比较高的动作
+- run.py
+    - 入口
+    
