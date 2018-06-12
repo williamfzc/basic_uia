@@ -36,7 +36,7 @@ class BaseTestCase(unittest.TestCase):
     @logger.add_log
     def setUp(self):
         super(BaseTestCase, self).setUp()
-        self.log.info('Now testing: {}'.format(self.__module__))
+        self.log.info('Now testing: {}'.format(self.case_name))
         self.before()
 
     @func_relax
@@ -44,7 +44,7 @@ class BaseTestCase(unittest.TestCase):
     def tearDown(self):
         # 出错时触发截图
         if sys.exc_info():
-            pic_name = '{}.png'.format(self._testMethodName)
+            pic_name = '{}_{}.png'.format(self.case_name, self._testMethodName)
             self.device.screenshot(os.path.join(cf.CUR_SCREEN_SHOT_DIR, pic_name))
 
         super(BaseTestCase, self).tearDown()
