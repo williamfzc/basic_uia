@@ -36,6 +36,7 @@ class BaseTestCase(unittest.TestCase):
     @logger.add_log
     def setUp(self):
         super(BaseTestCase, self).setUp()
+        self.log.info('Now testing: {}'.format(self.__module__))
         self.before()
 
     @func_relax
