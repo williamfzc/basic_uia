@@ -90,11 +90,11 @@ class JsonRPCError(Exception):
 
 class JsonRPCMethod(object):
 
-    if os.name == 'nt':
-        try:
-            pool = urllib3.PoolManager()
-        except:
-            pass
+    # if os.name == 'nt':
+    #     try:
+    #         pool = urllib3.PoolManager()
+    #     except:
+    #         pass
 
     def __init__(self, url, method, timeout=30):
         self.url, self.method, self.timeout = url, method, timeout
@@ -108,24 +108,24 @@ class JsonRPCMethod(object):
         elif kwargs:
             data["params"] = kwargs
         jsonresult = {"result": ""}
-        if os.name == "nt":
-            res = self.pool.urlopen("POST",
-                                    self.url,
-                                    headers={"Content-Type": "application/json"},
-                                    body=json.dumps(data).encode("utf-8"),
-                                    timeout=self.timeout)
-            jsonresult = json.loads(res.data.decode("utf-8"))
-        else:
-            result = None
-            try:
-                req = urllib2.Request(self.url,
-                                      json.dumps(data).encode("utf-8"),
-                                      {"Content-type": "application/json"})
-                result = urllib2.urlopen(req, timeout=self.timeout)
-                jsonresult = json.loads(result.read().decode("utf-8"))
-            finally:
-                if result is not None:
-                    result.close()
+        # if os.name == "nt":
+        #     res = self.pool.urlopen("POST",
+        #                             self.url,
+        #                             headers={"Content-Type": "application/json"},
+        #                             body=json.dumps(data).encode("utf-8"),
+        #                             timeout=self.timeout)
+        #     jsonresult = json.loads(res.data.decode("utf-8"))
+        # else:
+        result = None
+        try:
+            req = urllib2.Request(self.url,
+                                  json.dumps(data).encode("utf-8"),
+                                  {"Content-type": "application/json"})
+            result = urllib2.urlopen(req, timeout=self.timeout)
+            jsonresult = json.loads(result.read().decode("utf-8"))
+        finally:
+            if result is not None:
+                result.close()
         if "error" in jsonresult and jsonresult["error"]:
             raise JsonRPCError(
                 jsonresult["error"]["code"],
@@ -416,7 +416,8 @@ class AutomatorServer(object):
             _method_obj = JsonRPCMethod(url, method, timeout)
 
             def wrapper(*args, **kwargs):
-                URLError = urllib3.exceptions.HTTPError if os.name == "nt" else urllib2.URLError
+                # URLError = urllib3.exceptions.HTTPError if os.name == "nt" else urllib2.URLError
+                URLError = urllib2.URLError
                 try:
                     return _method_obj(*args, **kwargs)
                 except (URLError, socket.error, HTTPException) as e:
