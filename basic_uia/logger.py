@@ -1,8 +1,11 @@
 import logging
 import functools
+import time
+import config as cf
 
-# alias of logging.info
+# alias of logging's methods
 info = None
+error = None
 
 
 def init_logger(logger_path):
@@ -17,23 +20,26 @@ def init_logger(logger_path):
     file_handler.setLevel(logging.INFO)
     logging.getLogger('').addHandler(file_handler)
 
-    global info
+    global info, error
     info = logging.info
-    info('===== SYSTEM READY =====')
+    error = logging.error
+    info(' SYSTEM READY '.center(cf.LENGTH_OF_SPLIT_LINE, '='))
 
 
 def add_log(func):
     @functools.wraps(func)
     def deco(*args, **kwargs):
-        logging.info('----- {} START -----'.format(func.__name__))
+        logging.info(' {} START '.format(func.__name__).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
+        start_time = time.time()
         try:
             result = func(*args, **kwargs)
         except BaseException as e:
-            logging.warning('----- ERROR happened in {} -----'.format(func.__name__))
+            logging.warning(' ERROR happened in {} '.format(func.__name__).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
             logging.warning(str(e))
-            logging.warning('----- ERROR LOG END -----')
+            logging.warning(' ERROR LOG END '.center(cf.LENGTH_OF_SPLIT_LINE, '-'))
             raise e
         finally:
-            logging.info('----- {} STOP -----'.format(func.__name__))
+            time_cost = str(round(time.time() - start_time, 2))
+            logging.info(' {} STOP after {}s '.format(func.__name__, time_cost).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
         return result
     return deco

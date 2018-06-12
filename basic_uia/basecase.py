@@ -9,6 +9,7 @@ from basic_uia.api import CustomAPI
 
 
 def func_relax(func):
+    """ 用于给函数前后加延时 """
     @functools.wraps(func)
     def deco(*args, **kwargs):
         time.sleep(cf.RELAX_TIME)
@@ -19,14 +20,16 @@ def func_relax(func):
 
 
 class BaseTestCase(unittest.TestCase):
-    def __init__(self, device, case_name, output_stream, *args, **kwargs):
+    def __init__(self, device, case_name, output_stream, logout, *args, **kwargs):
         super(BaseTestCase, self).__init__(*args, **kwargs)
         self.device = device
         self.case_name = case_name
-        self.api = CustomAPI(self.device)
         self.adb = self.device.server.adb.cmd
+        self.log = logout
+        self.api = CustomAPI(self.device, self.adb, self.log)
 
         # TODO: 测试过程中需要记录的东西可以写到这 暂时没想到可以干嘛 可能用来记录关键bug？
+        # TODO: 测试记录？记录下失败前执行到什么位置
         self.output_stream = output_stream
 
     @func_relax

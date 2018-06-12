@@ -7,6 +7,7 @@ CASE_MODULE_DICT = dict()
 
 
 def load_all_cases():
+    """ 加载所有cases文件夹下的用例 """
     case_module_dict = dict()
     case_dir_path = cf.CASE_DIR_PATH
     pure_case_dir_name = os.path.basename(case_dir_path)

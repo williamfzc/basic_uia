@@ -5,7 +5,9 @@ import unittest
 import io
 
 
+# TODO 需要有 运行部分用例 的功能
 def run_all():
+    """ 运行所有用例 """
     runner_output = io.StringIO()
     runner_instance = HTMLTestRunner(
         stream=open(cf.CUR_RESULT_FILE, 'wb+')
@@ -27,6 +29,7 @@ def run_all():
                 device=each_device,
                 case_name=case_name,
                 output_stream=runner_output,
+                logout=logger,
             )
             case_list.append(case_item_cls)
 

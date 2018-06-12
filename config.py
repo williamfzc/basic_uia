@@ -11,9 +11,15 @@ TEMPLATE_DIR_PATH = os.path.join(PROJECT_PATH, 'templates')
 
 REPORT_TEMPLATE_FILE = os.path.join(TEMPLATE_DIR_PATH, 'report.html')
 
+# 自定义的外部API
+EXTEND_API_FILE_NAME = 'extend_api.py'
+EXTEND_API_FILE = os.path.join(PROJECT_PATH, EXTEND_API_FILE_NAME)
+
 # --- 配置 ---
 # 用例before、after、start执行前后停等时间
 RELAX_TIME = 1
+# 执行用例时分割线的长度
+LENGTH_OF_SPLIT_LINE = 60
 # 默认，本次任务结果文件夹
 CUR_TASK_NAME = datetime.datetime.now().strftime('%Y%m%d%H%M%S') + str(random.randint(0, 9))
 # 本次任务的结果文件夹
@@ -27,7 +33,7 @@ CUR_SCREEN_SHOT_DIR = None
 
 # --- 配置机器 ---
 # 通过参数传入也可
-DEVICE_ID_LIST = ['QGTKH6MFVWRODU8T', ]
+DEVICE_ID_LIST = ['IRZSPZHMIR6LQGNV', ]
 
 
 # --- 文件夹初始化 ---

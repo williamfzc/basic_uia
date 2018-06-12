@@ -7,6 +7,7 @@ DEVICE_INSTANCE_DICT = dict()
 
 
 def confirm_device_connection(device_id):
+    """ 确保设备已经正常连接上 """
     for line in os.popen('adb devices'):
         if device_id in line and 'device' in line:
             return True
@@ -29,6 +30,7 @@ class DeviceItem(object):
 
 
 def connect_all_device():
+    """ 关联所有配置的设备 """
     for each_id in cf.DEVICE_ID_LIST:
         DEVICE_INSTANCE_DICT[each_id] = DeviceItem(each_id)
     logger.info('all connected.')
