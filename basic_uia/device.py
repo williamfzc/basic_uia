@@ -16,6 +16,7 @@ def confirm_device_connection(device_id):
 
 
 class DeviceItem(object):
+    """ 设备类 """
     def __init__(self, device_id):
         self.device_id = device_id
         confirm_device_connection(device_id)

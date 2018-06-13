@@ -20,6 +20,7 @@ def func_relax(func):
 
 
 class BaseTestCase(unittest.TestCase):
+    """ 测试用例基类 """
     def __init__(self, device, case_name, output_stream, logout, *args, **kwargs):
         super(BaseTestCase, self).__init__(*args, **kwargs)
         self.device = device

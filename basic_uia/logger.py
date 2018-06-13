@@ -9,6 +9,7 @@ error = None
 
 
 def init_logger(logger_path):
+    """ 初始化日志模块 """
     log_format = "%(asctime)s - %(levelname)s - %(message)s"
     logging.basicConfig(
         level=logging.INFO,
@@ -27,6 +28,7 @@ def init_logger(logger_path):
 
 
 def add_log(func):
+    """ 函数执行流程的日志装饰器 """
     @functools.wraps(func)
     def deco(*args, **kwargs):
         logging.info(' {} START '.format(func.__name__).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
