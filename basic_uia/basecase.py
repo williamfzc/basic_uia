@@ -41,11 +41,7 @@ class BaseTestCase(unittest.TestCase):
         self.log.info(
             ' CURRENT CASE: [ {} ] '.format(self.case_name)
                 .center(cf.LENGTH_OF_SPLIT_LINE, '-'))
-
-        @logger.add_log
-        def wrap_func():
-            self.before()
-        return wrap_func
+        self.before()
 
     @func_relax
     def tearDown(self):

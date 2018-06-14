@@ -939,7 +939,7 @@ class AutomatorDeviceUiObject(object):
         d(text="Image").long_click.bottomright()  # long click on the topleft of the ui object
         '''
         @param_to_property(corner=["tl", "topleft", "br", "bottomright"])
-        def _long_click(custom_steps, corner=None):
+        def _long_click(custom_steps=100, corner=None):
             info = self.info
             if info["longClickable"]:
                 if corner:
