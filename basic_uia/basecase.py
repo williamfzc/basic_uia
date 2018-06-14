@@ -63,7 +63,6 @@ class BaseTestCase(unittest.TestCase):
         # RESET
         self.device.press.home()
         self.api.clean_recent()
-        self.log.info('-' * cf.LENGTH_OF_SPLIT_LINE)
 
     @func_relax
     def runTest(self):

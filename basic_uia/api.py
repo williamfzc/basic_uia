@@ -48,9 +48,6 @@ def load_extend_api(module_class):
             # TO USE ORIGIN API
             module_class,
         )
-        logger.info('extend api ready.')
-    else:
-        logger.info('no extend api detected.')
 
 
 class CustomAPI(object):
