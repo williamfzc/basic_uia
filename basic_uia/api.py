@@ -1,6 +1,7 @@
 import time
 import os
 import importlib
+
 import config as cf
 import basic_uia.logger as logger
 
@@ -41,7 +42,12 @@ def load_extend_api(module_class):
     if os.path.exists(cf.EXTEND_API_FILE):
         extend_api_module = importlib.import_module(os.path.splitext(cf.EXTEND_API_FILE_NAME)[0])
         module_class.extend_api = extend_api_module.ExtendAPI(
-            module_class.device, module_class.adb, module_class.log)
+            module_class.device,
+            module_class.adb,
+            module_class.log,
+            # TO USE ORIGIN API
+            module_class,
+        )
         logger.info('extend api ready.')
     else:
         logger.info('no extend api detected.')

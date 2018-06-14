@@ -1,5 +1,6 @@
-import config as cf
 import os
+
+import config as cf
 from basic_uia import logger
 from .uiautomator import Device
 

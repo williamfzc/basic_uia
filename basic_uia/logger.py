@@ -1,6 +1,7 @@
 import logging
 import functools
 import time
+
 import config as cf
 
 # alias of logging's methods
@@ -31,17 +32,10 @@ def add_log(func):
     """ 函数执行流程的日志装饰器 """
     @functools.wraps(func)
     def deco(*args, **kwargs):
-        logging.info(' {} START '.format(func.__name__).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
+        func_desc = func.__doc__
+        logging.info('*** Start Function [{}] ***'.format(func_desc))
         start_time = time.time()
-        try:
-            result = func(*args, **kwargs)
-        except BaseException as e:
-            logging.warning(' ERROR happened in {} '.format(func.__name__).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
-            logging.warning(str(e))
-            logging.warning(' ERROR LOG END '.center(cf.LENGTH_OF_SPLIT_LINE, '-'))
-            raise e
-        finally:
-            time_cost = str(round(time.time() - start_time, 2))
-            logging.info(' {} STOP after {}s '.format(func.__name__, time_cost).center(cf.LENGTH_OF_SPLIT_LINE, '-'))
+        result = func(*args, **kwargs)
+        logging.info('--- Done in {} seconds ---'.format(str(round(time.time() - start_time, 2))))
         return result
     return deco

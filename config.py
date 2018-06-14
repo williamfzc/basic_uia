@@ -9,11 +9,13 @@ CASE_DIR_PATH = os.path.join(PROJECT_PATH, 'cases')
 RESULT_DIR_PATH = os.path.join(PROJECT_PATH, 'result')
 TEMPLATE_DIR_PATH = os.path.join(PROJECT_PATH, 'templates')
 
-REPORT_TEMPLATE_FILE = os.path.join(TEMPLATE_DIR_PATH, 'report.html')
-
 # 自定义的外部API
 EXTEND_API_FILE_NAME = 'extend_api.py'
 EXTEND_API_FILE = os.path.join(PROJECT_PATH, EXTEND_API_FILE_NAME)
+
+# 用例配置文件
+CASE_CONFIG_FILE_NAME = 'case_config.txt'
+CASE_CONFIG_FILE = os.path.join(CASE_DIR_PATH, CASE_CONFIG_FILE_NAME)
 
 # --- 配置 ---
 # 用例before、after、start执行前后停等时间

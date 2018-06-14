@@ -22,12 +22,12 @@ class TestCase(BaseTestCase):
     
     def start(self):
         # 输出log，用于分析
-        self.log.info('开始测试')
+        self.log.info('LOG FROM ' + self.case_name)
 
         # 调用 uiautomator 的API
         # 详情可以参见 https://github.com/xiaocong/uiautomator 中的文档
         # 这里是一个唤醒操作与滑动操作的例子
-        self.device.wakeup()
+        self.device.wakeup.abc()
         self.device.swipe(500, 1000, 500, 0, steps=10)
 
         # 调用adb命令，下面这一句即：
@@ -58,6 +58,7 @@ class TestCase(BaseTestCase):
         self.assertTrue(self.device(text="搜索").exists)
 
         self.device(text="搜索").set_text("饿了么")
+        self.device.press.back()
         time.sleep(2)
         self.assertTrue(self.device(text="秒开").exists)
         self.device(text="秒开").click()

@@ -1,8 +1,9 @@
+import unittest
+import io
+
 from basic_uia import device, logger, utils
 from basic_uia.htmltestrunner import HTMLTestRunner
 import config as cf
-import unittest
-import io
 
 
 # TODO 需要有 运行部分用例 的功能
@@ -19,12 +20,6 @@ def run_all():
     case_list = list()
     for case_name, case_item in case_dict.items():
         for each_device_id, each_device in device_dict.items():
-            logger.info(
-                'Load case [ {} ] finished.'.format(
-                    case_name,
-                    each_device_id,
-                )
-            )
             case_item_cls = case_item.TestCase(
                 device=each_device,
                 case_name=case_name,
@@ -38,8 +33,17 @@ def run_all():
     result = runner_instance.run(test_suite)
 
     # result analysis
-    logger.info('Total cases: ' + str(result.testsRun))
-    logger.info('Fail cases: ' + str(len(result.failures)))
+    total_case_num = result.testsRun
+    fail_case_num = result.failure_count
+    pass_case_num = result.success_count
+    error_case_num = result.error_count
+
+    logger.info('Total cases: {}'.format(total_case_num))
+    logger.info('Pass cases: {}'.format(pass_case_num))
+    logger.info('Fail cases: {}'.format(fail_case_num))
+    logger.info('Error cases: {}'.format(error_case_num))
+
+    logger.info('To view details, please check {}.'.format(cf.CUR_RESULT_FILE))
 
     runner_output.close()
-    logger.info('test end')
+    logger.info(' Test end '.center(cf.LENGTH_OF_SPLIT_LINE, '='))
