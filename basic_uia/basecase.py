@@ -1,10 +1,7 @@
-import unittest
 import time
 import functools
-import sys
-import os
 
-import basic_uia.logger as logger
+import basic_uia.unittest as unittest
 import config as cf
 from basic_uia.api import CustomAPI
 
@@ -46,13 +43,6 @@ class BaseTestCase(unittest.TestCase):
     @func_relax
     def tearDown(self):
         """ after() """
-
-        # TODO: 出错时触发截图 使用htmltestrunner之后这个不能用了
-        # if sys.exc_info()[1]:
-        #     self.log.error('error happened: {}'.format(sys.exc_info()))
-        #     pic_name = '{}_{}.png'.format(self.case_name, self._testMethodName)
-        #     self.device.screenshot(os.path.join(cf.CUR_SCREEN_SHOT_DIR, pic_name))
-
         super(BaseTestCase, self).tearDown()
         self.after()
 

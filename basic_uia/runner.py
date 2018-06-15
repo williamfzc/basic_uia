@@ -40,7 +40,7 @@ def run_all():
     logger.info('Total cases: {}'.format(total_case_num))
     logger.info('Pass cases: {}'.format(pass_case_num))
     logger.info('Fail cases: {}'.format(fail_case_num))
-    logger.info('Error cases: {}'.format(error_case_num))
+    logger.info('Error happened times: {}'.format(error_case_num))
 
     logger.info('To view details, please check {}.'.format(cf.CUR_RESULT_FILE))
 
