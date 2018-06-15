@@ -23,6 +23,6 @@ if __name__ == '__main__':
     logger.init_logger(cf.CUR_LOG_FILE)
 
     # 主流程
-    device.connect_all_device()
+    device.connect_device()
     utils.load_all_cases()
     runner.run_all()

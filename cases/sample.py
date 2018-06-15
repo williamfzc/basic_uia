@@ -27,7 +27,7 @@ class TestCase(BaseTestCase):
         # 调用 uiautomator 的API
         # 详情可以参见 https://github.com/xiaocong/uiautomator 中的文档
         # 这里是一个唤醒操作与滑动操作的例子
-        self.device.wakeup.abc()
+        self.device.wakeup()
         self.device.swipe(500, 1000, 500, 0, steps=10)
 
         # 调用adb命令，下面这一句即：

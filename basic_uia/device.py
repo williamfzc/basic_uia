@@ -4,7 +4,7 @@ import config as cf
 from basic_uia import logger
 from .uiautomator import Device
 
-DEVICE_INSTANCE_DICT = dict()
+TEST_DEVICE = None
 
 
 def confirm_device_connection(device_id):
@@ -31,8 +31,9 @@ class DeviceItem(object):
         return self._device_instance.__call__(*args, **kwargs)
 
 
-def connect_all_device():
+def connect_device():
     """ 关联所有配置的设备 """
-    for each_id in cf.DEVICE_ID_LIST:
-        DEVICE_INSTANCE_DICT[each_id] = DeviceItem(each_id)
-    logger.info('all connected.')
+    device_id = cf.DEVICE_ID_LIST[0]
+    global TEST_DEVICE
+    TEST_DEVICE = DeviceItem(device_id)
+    logger.info('Device [ {} ] connected.'.format(device_id))
