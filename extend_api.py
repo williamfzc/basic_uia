@@ -23,11 +23,11 @@ class ExtendAPI(object):
     # 主要目的是为了简化重复率比较高的工作
     def screen_off_and_on(self):
         self.log.info('LOG FROM ' + __name__)
-        self.device.sleep()
+        self.device.screen_off()
         time.sleep(1)
-        self.device.wakeup()
+        self.device.screen_on()
         time.sleep(1)
-        self.device.swipe(500, 1000, 500, 0, steps=10)
+        self.device.swipe(500, 1000, 500, 0, duration=0.5)
         time.sleep(1)
         self.origin_api.clean_recent()
         time.sleep(1)

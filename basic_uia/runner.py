@@ -45,4 +45,5 @@ def run_all():
     logger.info('To view details, please check {}.'.format(cf.CUR_RESULT_FILE))
 
     runner_output.close()
+    device_item.service("uiautomator").stop()
     logger.info(' Test end '.center(cf.LENGTH_OF_SPLIT_LINE, '='))
