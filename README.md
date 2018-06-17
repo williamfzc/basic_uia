@@ -8,16 +8,13 @@ Based on Python3
 
 - 在`config.py`中添加手机id
 - 在cases中添加用例，参考`sample.py`
-- API参考[这里](https://github.com/xiaocong/uiautomator)
+- API参考[这里](https://blog.csdn.net/qq_38071435/article/details/80003212)
 
 ### 运行方式
 
 - `python run.py` 会根据`config.py`中的配置运行
 - `python run.py -d 123456F` 会在id为`123456F`的机型上运行
-    - 支持多设备，`python run.py -d 123456F,234567E`，逗号分隔，不能有空格
-    - 串行执行，如果需要并行建议使用上层流水线
-- 支持指定任务名
-    - `python run.py -d 123456F -t abcde`
+- `python run.py -d 123456F -t abcde` 会指定任务名为abcde
 
 ## 工程主要结构
 
