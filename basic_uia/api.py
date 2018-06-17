@@ -38,11 +38,13 @@ class CustomAPI(object):
         self.device.press('recent')
         time.sleep(0.5)
         self.device(
-            resourceId='com.coloros.recents:id/clear_button'
+            resourceId="com.coloros.recents:id/progress_bar"
         ).click()
 
-    def input_text(self, input_str):
-        self.adb('shell am broadcast -a ADB_INPUT_TEXT --es msg ' + str(input_str))
+    def unlock(self):
+        self.device.screen_on()
+        if self.device(description="相机开启").exists:
+            self.device.swipe(500, 1000, 500, 0, duration=0.3)
 
     def enter_home_page(self):
         """ 返回首页第一屏 """

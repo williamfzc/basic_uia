@@ -616,6 +616,8 @@ class TestCase(object):
                     self.log.error('error happened: ' + str(self._outcome.errors))
                     pic_name = '{}_{}.png'.format(self.case_name, self._testMethodName)
                     self.device.screenshot(os.path.join(cf.CUR_SCREEN_SHOT_DIR, pic_name))
+                else:
+                    self.log.info('no error happened in this case')
 
                 with outcome.testPartExecutor(self):
                     self.tearDown()

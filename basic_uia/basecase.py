@@ -23,7 +23,7 @@ class BaseTestCase(unittest.TestCase):
         super(BaseTestCase, self).__init__(*args, **kwargs)
         self.device = device
         self.case_name = case_name
-        self.adb = self.device.server.adb.cmd
+        self.adb = self.device.adb_shell
         self.log = logout
         self.api = CustomAPI(self.device, self.adb, self.log)
 
@@ -35,6 +35,8 @@ class BaseTestCase(unittest.TestCase):
     def setUp(self):
         """ before() """
         super(BaseTestCase, self).setUp()
+        if not self.device.healthcheck():
+            raise ConnectionError(str(self.device.serial) + ' lost.')
         self.log.info(
             ' CURRENT CASE: [ {} ] '.format(self.case_name)
                 .center(cf.LENGTH_OF_SPLIT_LINE, '-'))
@@ -47,7 +49,7 @@ class BaseTestCase(unittest.TestCase):
         self.after()
 
         # RESET
-        self.device.press.home()
+        self.device.press('home')
         self.api.clean_recent()
 
     @func_relax
