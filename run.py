@@ -1,4 +1,3 @@
-import basic_uia.runner as runner
 import basic_uia.device as device
 import basic_uia.utils as utils
 import basic_uia.logger as logger
@@ -25,4 +24,4 @@ if __name__ == '__main__':
     # 主流程
     device.connect_device()
     utils.load_all_cases()
-    runner.run_all()
+    utils.run_all()

@@ -12,7 +12,10 @@ class TestCase(BaseTestCase):
         前置操作，在用例真正逻辑进行之前的环境配置可以写在这里
         例如，在测试前需要先解锁，或进入到某个页面
         """
-        pass
+
+        # 通过 device 调用 uiautomator2 的API
+        # 详见 https://blog.csdn.net/qq_38071435/article/details/80003212
+        self.device.unlock()
 
     def after(self):
         # 这里可以添加一些后置操作，环境清理的操作
@@ -24,14 +27,8 @@ class TestCase(BaseTestCase):
         # 输出log，用于分析
         self.log.info('LOG FROM ' + self.case_name)
 
-        # 调用 uiautomator 的API
-        # 详情可以参见 https://github.com/xiaocong/uiautomator 中的文档
-        # 这里是一个唤醒操作与滑动操作的例子
-        self.device.screen_on()
-        self.device.swipe(500, 1000, 500, 0, duration=1)
-
-        # 调用adb命令，下面这一句即：
-        # adb -s YOUR_DEVICE_ID shell am start -n ......
+        # 调用adb命令，self.adb 即：
+        # adb -s YOUR_DEVICE_ID shell
         # 推荐使用该方式而不是os或subprocess强行调用
         self.adb('am start -n com.nearme.instant.platform/a.a.a.bdf')
 
@@ -50,7 +47,7 @@ class TestCase(BaseTestCase):
 
         # 下面是一个组合起来的例子
         # 启动快捷入口
-        self.device.swipe(500, 400, 500, 1000, duration=1)
+        self.device.swipe(500, 400, 500, 1000, duration=0.5)
         time.sleep(2)
 
         # 使用unittest原生的assert来判定测试结果

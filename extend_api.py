@@ -27,7 +27,7 @@ class ExtendAPI(object):
         time.sleep(1)
         self.device.screen_on()
         time.sleep(1)
-        self.device.swipe(500, 1000, 500, 0, duration=0.5)
+        self.origin_api.unlock()
         time.sleep(1)
         self.origin_api.clean_recent()
         time.sleep(1)

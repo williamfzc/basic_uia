@@ -49,7 +49,7 @@ class BaseTestCase(unittest.TestCase):
         self.after()
 
         # RESET
-        self.device.press.home()
+        self.device.press('home')
         self.api.clean_recent()
 
     @func_relax
