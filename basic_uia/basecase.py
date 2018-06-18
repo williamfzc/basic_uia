@@ -37,6 +37,8 @@ class BaseTestCase(unittest.TestCase):
         super(BaseTestCase, self).setUp()
         if not self.device.healthcheck():
             raise ConnectionError(str(self.device.serial) + ' lost.')
+        self.api.reset_case()
+
         self.log.info(
             ' CURRENT CASE: [ {} ] '.format(self.case_name)
                 .center(cf.LENGTH_OF_SPLIT_LINE, '-'))
@@ -47,10 +49,7 @@ class BaseTestCase(unittest.TestCase):
         """ after() """
         super(BaseTestCase, self).tearDown()
         self.after()
-
-        # RESET
-        self.device.press('home')
-        self.api.clean_recent()
+        self.api.reset_case()
 
     @func_relax
     def runTest(self):

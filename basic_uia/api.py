@@ -50,3 +50,15 @@ class CustomAPI(object):
         """ 返回首页第一屏 """
         for _ in range(5):
             self.device.press('home')
+
+    def reset_case(self):
+        """ 用例初始化状态 """
+        self.enter_home_page()
+        self.clean_recent()
+
+    def input_chinese(self, text):
+        """
+        使用特别的输入法 输入中文
+        需要预先在手机上安装并将其设置为默认
+        """
+        self.adb('am broadcast -a ADB_INPUT_TEXT --es msg ' + str(text))
