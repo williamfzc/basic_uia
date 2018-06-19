@@ -60,5 +60,6 @@ class CustomAPI(object):
         """
         使用特别的输入法 输入中文
         需要预先在手机上安装并将其设置为默认
+        位置 tools/ADBKeyBoard.apk
         """
         self.adb('am broadcast -a ADB_INPUT_TEXT --es msg ' + str(text))
