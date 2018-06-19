@@ -8,13 +8,22 @@ Based on Python3
 
 - 在`config.py`中添加手机id
 - 在cases中添加用例，参考`sample.py`
-- API参考[这里](https://blog.csdn.net/qq_38071435/article/details/80003212)
 
 ### 运行方式
 
 - `python run.py` 会根据`config.py`中的配置运行
 - `python run.py -d 123456F` 会在id为`123456F`的机型上运行
 - `python run.py -d 123456F -t abcde` 会指定任务名为abcde
+
+## 注意事项
+
+- 在启动前需要使用`python -m uiautomator2 init`初始化设备
+- 如需使用中文输入，先在手机上安装`basic_uia/tools/ADBKeyBoard.apk`并将其设置为默认输入法，之后调用api.py中的`input_chinese`
+
+## 实用工具参考
+
+- 一定要看的[API文档](https://blog.csdn.net/qq_38071435/article/details/80003212)
+- 用来查看控件，代替uiautomatorviewer的[Weditor](https://github.com/openatx/weditor)
 
 ## 工程主要结构
 
