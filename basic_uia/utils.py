@@ -3,7 +3,7 @@ import importlib
 import unittest
 import io
 
-from basic_uia import device, logger, utils
+from basic_uia import device, logger
 from basic_uia.htmltestrunner import HTMLTestRunner
 import config as cf
 
@@ -54,7 +54,7 @@ def run_all():
         stream=open(cf.CUR_RESULT_FILE, 'wb+')
     )
 
-    case_dict = utils.CASE_MODULE_DICT
+    case_dict = CASE_MODULE_DICT
     device_item = device.TEST_DEVICE
     test_suite = unittest.TestSuite()
     case_list = list()
