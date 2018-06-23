@@ -15,6 +15,13 @@ Based on Python3
 - `python run.py -d 123456F` 会在id为`123456F`的机型上运行
 - `python run.py -d 123456F -t abcde` 会指定任务名为abcde
 
+### 多设备 (BETA)
+
+`python multi_run.py -d 123456F,234567F -t abcde`
+
+- 将会在id为123456F与234567F的机器上并行执行
+- 结果会命名为`abcde_123456F`与`abcde_234567F`的形式
+
 ## 注意事项
 
 - 在启动前需要使用`python -m uiautomator2 init`初始化设备

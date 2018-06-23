@@ -9,6 +9,10 @@ CASE_DIR_PATH = os.path.join(PROJECT_PATH, 'cases')
 RESULT_DIR_PATH = os.path.join(PROJECT_PATH, 'result')
 TEMPLATE_DIR_PATH = os.path.join(PROJECT_PATH, 'templates')
 
+# 项目入口文件
+ENTRY_PYTHON_FILE_NAME = 'run.py'
+ENTRY_PYTHON_FILE = os.path.join(PROJECT_PATH, ENTRY_PYTHON_FILE_NAME)
+
 # 自定义的外部API
 EXTEND_API_FILE_NAME = 'extend_api.py'
 EXTEND_API_FILE = os.path.join(PROJECT_PATH, EXTEND_API_FILE_NAME)
